@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Юрий - фото, видео и съёмка с дрона</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg: #090a0d;
+        --panel: #11151b;
+        --text: #f6f2ea;
+        --muted: #c9c2b6;
+        --line: rgba(246, 242, 234, 0.18);
+        --gold: #d6a84f;
+        --green: #25D366;
+        --blue: #1677ff;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        min-width: 320px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    a {
+        color: inherit;
+    }
+
+    .page {
+        overflow-x: hidden;
+    }
+
+    .hero {
+        position: relative;
+        min-height: 88vh;
+        min-height: 88svh;
+        display: flex;
+        align-items: center;
+        padding: clamp(24px, 5vw, 72px);
+        isolation: isolate;
+        overflow: hidden;
+        background:
+            linear-gradient(90deg, rgba(9, 10, 13, 0.98) 0%, rgba(9, 10, 13, 0.78) 48%, rgba(9, 10, 13, 0.34) 100%),
+            #090a0d;
+    }
+
+    .hero-photo {
+        position: absolute;
+        z-index: -2;
+        right: clamp(10px, 5vw, 84px);
+        top: 50%;
+        width: min(48vw, 480px);
+        max-width: calc(100vw - 32px);
+        max-height: calc(100% - 36px);
+        height: auto;
+        object-fit: contain;
+        transform: translateY(-50%);
+        filter: saturate(1.05) contrast(1.04);
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: auto 0 0;
+        height: 42%;
+        background: linear-gradient(180deg, rgba(9, 10, 13, 0), rgba(9, 10, 13, 0.9));
+    }
+
+    .hero-content {
+        width: min(100%, 650px);
+        padding: clamp(18px, 3vw, 28px) 0;
+    }
+
+    .label {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--gold);
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    h1 {
+        margin: 18px 0 16px;
+        font-size: clamp(38px, 7vw, 78px);
+        line-height: 1;
+        font-weight: 800;
+    }
+
+    .lead {
+        max-width: 570px;
+        margin: 0 0 30px;
+        color: var(--muted);
+        font-size: clamp(18px, 2.3vw, 24px);
+        line-height: 1.45;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 14px 22px;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .btn.whatsapp {
+        background: var(--green);
+    }
+
+    .btn.call {
+        background: var(--blue);
+    }
+
+    .section {
+        padding: clamp(42px, 7vw, 76px) clamp(18px, 5vw, 72px);
+    }
+
+    .section-inner {
+        width: min(100%, 1120px);
+        margin: 0 auto;
+    }
+
+    .section-title {
+        margin: 0 0 26px;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.08;
+    }
+
+    .services {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .service {
+        min-height: 190px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+    }
+
+    .service strong {
+        display: block;
+        margin-bottom: 12px;
+        color: var(--gold);
+        font-size: 22px;
+    }
+
+    .service p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .cta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 22px;
+        margin-top: clamp(34px, 6vw, 64px);
+        padding: 26px 0 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .cta p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.45;
+    }
+
+    @media (max-width: 820px) {
+        .hero {
+            min-height: 92vh;
+            min-height: 92svh;
+            align-items: flex-end;
+            padding: 24px 18px 32px;
+            background:
+                linear-gradient(180deg, rgba(9, 10, 13, 0.14) 0%, rgba(9, 10, 13, 0.32) 42%, rgba(9, 10, 13, 0.96) 100%),
+                #090a0d;
+        }
+
+        .hero-photo {
+            top: 20px;
+            right: 50%;
+            width: min(78vw, 360px);
+            max-height: 58%;
+            transform: translateX(50%);
+        }
+
+        .hero-content {
+            padding-top: 42vh;
+        }
+
+        .services {
+            grid-template-columns: 1fr;
+        }
+
+        .service {
+            min-height: 0;
+        }
+
+        .cta {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 440px) {
+        h1 {
+            font-size: 38px;
+        }
+
+        .actions,
+        .btn {
+            width: 100%;
+        }
+
+        .hero-content {
+            padding-top: 44vh;
+        }
+
+        .hero-photo {
+            width: min(86vw, 320px);
+            max-height: 54%;
+        }
+    }
+</style>
+</head>
+<body>
+<main class="page">
+    <section class="hero" aria-label="Юрий - фото, видео и съёмка с дрона">
+        <img class="hero-photo" src="banner.jpg" alt="">
+        <div class="hero-content">
+            <span class="label">Фото / видео / дрон</span>
+            <h1>Юрий. Съёмка, которая работает на впечатление.</h1>
+            <p class="lead">Профессиональная фото- и видеосъёмка для событий, бизнеса, рекламы и проектов, где важны свет, ракурс и спокойная уверенность в результате.</p>
+            <div class="actions">
+                <a class="btn whatsapp" href="https://wa.me/79638332471?text=Здравствуйте,%20мы%20работаем%20для%20вас.%20Напишите%20ваши%20желания%20и%20оставьте%20номер%20-%20мы%20перезвоним.">Написать в WhatsApp</a>
+                <a class="btn call" href="tel:+79638332471">Позвонить</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <h2 class="section-title">Съёмка под задачу</h2>
+            <div class="services">
+                <article class="service">
+                    <strong>Фото</strong>
+                    <p>Репортажи, портреты, мероприятия и контент для бизнеса с аккуратной обработкой и естественной подачей.</p>
+                </article>
+                <article class="service">
+                    <strong>Видео</strong>
+                    <p>Короткие ролики, презентации, реклама и съёмка событий с понятным ритмом и вниманием к деталям.</p>
+                </article>
+                <article class="service">
+                    <strong>Дрон</strong>
+                    <p>Аэросъёмка объектов, площадок, природы и мероприятий, когда нужен масштаб и выразительный общий план.</p>
+                </article>
+            </div>
+
+            <div class="cta">
+                <p>Расскажите, что нужно снять, где и в какие сроки. Можно сразу отправить детали в WhatsApp или просто позвонить.</p>
+                <div class="actions">
+                    <a class="btn whatsapp" href="https://wa.me/79638332471?text=Здравствуйте,%20мы%20работаем%20для%20вас.%20Напишите%20ваши%20желания%20и%20оставьте%20номер%20-%20мы%20перезвоним.">WhatsApp</a>
+                    <a class="btn call" href="tel:+79638332471">Звонок</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
